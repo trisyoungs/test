@@ -1,0 +1,13 @@
+name: Sub Step
+
+runs:
+  using: "composite"
+  steps:
+
+  - name: Secret test
+    env:
+      dummySecret: ${{ secrets.HARMLESS }}
+    shell: bash
+    run: |
+      echo "More harmless stuff."
+      echo $dummySecret

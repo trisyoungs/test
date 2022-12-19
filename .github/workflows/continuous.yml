@@ -19,3 +19,6 @@ jobs:
       run: |
         echo "Nothing bad will happen."
         echo $dummySecret
+    - name: Sub step test
+      uses: "./.github/workflows/sub"
+
