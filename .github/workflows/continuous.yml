@@ -21,6 +21,6 @@ jobs:
         echo $dummySecret
     - name: Sub step test
       uses: "./.github/workflows/sub"
-      secrets:
+      env:
         dummySecret: ${{ secrets.HARMLESS }}
 
