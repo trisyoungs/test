@@ -9,3 +9,15 @@ runs:
     run: |
       echo "More harmless stuff."
       echo $dummySecret
+
+  - name: Download Prerequisites
+    shell: bash
+    run: |
+      wget https://raw.githubusercontent.com/disorderedmaterials/scripts/master/update-release
+      chmod u+x ./update-release
+
+  - name: Publish on GitHub
+    shell: bash
+    run: |
+      GITHUB_TOKEN=${{ github.token }}
+      ./update-release -r trisyoungs/testRepo -t 0.1 -n 0.1 -f ReleaseNotes.md DummyArtifact.txt
