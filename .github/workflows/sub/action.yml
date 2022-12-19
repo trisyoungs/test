@@ -20,4 +20,4 @@ runs:
     shell: bash
     run: |
       export GITHUB_TOKEN=${{ github.token }}
-      ./update-release -r trisyoungs/testRepo -t 0.1 -n 0.1 -f ReleaseNotes.md DummyArtifact.txt
+      ./update-release -r trisyoungs/test -t 0.1 -n 0.1 -f ReleaseNotes.md DummyArtifact.txt
