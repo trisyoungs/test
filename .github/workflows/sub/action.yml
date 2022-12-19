@@ -19,5 +19,5 @@ runs:
   - name: Publish on GitHub
     shell: bash
     run: |
-      GITHUB_TOKEN=${{ github.token }}
+      export GITHUB_TOKEN=${{ github.token }}
       ./update-release -r trisyoungs/testRepo -t 0.1 -n 0.1 -f ReleaseNotes.md DummyArtifact.txt
