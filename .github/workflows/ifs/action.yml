@@ -3,7 +3,7 @@ name: Ifs
 inputs:
   a:
     type: boolean
-    default: false
+    default: true
   b:
     type: boolean
     default: true
