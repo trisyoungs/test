@@ -1,0 +1,26 @@
+name: Continuous
+
+on:
+  pull_request:
+    branches:
+    - '*'
+
+jobs:
+
+  SecretTest:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Local step test
+      shell: bash
+      env:
+        dummySecret: ${{ secrets.HARMLESS }}
+      run: |
+        echo "Nothing bad will happen."
+        echo $dummySecret
+    - name: Sub step test
+      uses: "./.github/workflows/ifs"
+      env:
+        dummySecret: ${{ secrets.HARMLESS }}
+
