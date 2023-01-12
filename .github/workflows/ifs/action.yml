@@ -1,0 +1,50 @@
+name: Ifs
+
+inputs:
+  a:
+    type: boolean
+    default: true
+  b:
+    type: boolean
+    default: true
+
+runs:
+  using: "composite"
+  steps:
+
+  - name: Step A
+    if: ${{ (inputs.a == 'true') }}
+    shell: bash
+    run: |
+      echo "This is Step A."
+
+  - name: Step B
+    if: ${{ (inputs.b == 'true') }}
+    shell: bash
+    run: |
+      echo "This is Step B."
+
+  - name: Step AB
+    if: ${{ (inputs.a == 'true') && (inputs.b == 'true') }}
+    shell: bash
+    run: |
+      echo "This is Step AB."
+
+  - name: Step AnotB
+    if: ${{ (inputs.a == 'true') && (inputs.b == 'false') }}
+    shell: bash
+    run: |
+      echo "This is Step AnotB."
+
+  - name: Step AB No Parentheses
+    if: ${{ inputs.a == 'true' && inputs.b == 'true' }}
+    shell: bash
+    run: |
+      echo "This is Step AB No Parentheses."
+
+  - name: Step AnotB No Parentheses
+    if: ${{ inputs.a == 'true' && inputs.b == 'false' }}
+    shell: bash
+    run: |
+      echo "This is Step AnotB No Parentheses."
+
