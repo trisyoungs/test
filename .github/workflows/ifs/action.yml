@@ -40,11 +40,11 @@ runs:
     if: ${{ inputs.a == 'true' && inputs.b == 'true' }}
     shell: bash
     run: |
-      echo "This is Step AB."
+      echo "This is Step AB No Parentheses."
 
   - name: Step AnotB No Parentheses
     if: ${{ inputs.a == 'true' && inputs.b == 'false' }}
     shell: bash
     run: |
-      echo "This is Step AnotB."
+      echo "This is Step AnotB No Parentheses."
 

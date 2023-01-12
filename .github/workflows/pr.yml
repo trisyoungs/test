@@ -21,6 +21,7 @@ jobs:
         echo $dummySecret
     - name: Sub step test
       uses: "./.github/workflows/ifs"
-      env:
-        dummySecret: ${{ secrets.HARMLESS }}
+      with:
+        a: false
+        b: false
 
