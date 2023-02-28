@@ -1,9 +1,9 @@
 name: Continuous
 
 on:
-  push:
+  pull_request:
     branches:
-    - 'main'
+    - '*'
 
 env:
   version: 1.2.3
