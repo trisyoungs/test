@@ -1,9 +1,12 @@
 name: Continuous
 
 on:
-  push:
+  pull_request:
     branches:
-    - 'main'
+    - '*'
+
+env:
+  version: 1.2.3
 
 jobs:
 
@@ -12,15 +15,18 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: Local step test
+    - name: Change the ReleaseNotes
       shell: bash
-      env:
-        dummySecret: ${{ secrets.HARMLESS }}
       run: |
-        echo "Nothing bad will happen."
-        echo $dummySecret
-    - name: Sub step test
-      uses: "./.github/workflows/sub"
-      env:
-        dummySecret: ${{ secrets.HARMLESS }}
-
+        echo "Changing the release notes...."
+        echo "I am a new line." >> ReleaseNotes.md
+    - name: Create PR
+      uses: peter-evans/create-pull-request@v4
+      with:
+        base: main
+        add-paths: ReleaseNotes.md
+        commit-message: Update release version info.
+        delete-branch: true
+        branch: automation/update-current-release-to-${{ env.version }}
+        title: Update website release info (v${{ env.version}})
+        reviewers: trisyoungs
