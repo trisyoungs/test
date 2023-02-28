@@ -25,6 +25,7 @@ jobs:
       with:
         base: main
         add-paths: ReleaseNotes.md
+        commit-message: Update release version info.
         delete-branch: true
         branch: automation/update-current-release-to-${{ env.version }}
         title: Update website release info (v${{ env.version}})
